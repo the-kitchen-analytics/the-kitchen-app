@@ -46,13 +46,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@v1
-        with:
-          subject-name: glebremniov/the-kitchen-web-app
-          subject-digest: ${{ steps.push.outputs.digest }}
-          push-to-registry: true
