@@ -1,17 +1,27 @@
-FROM --platform=$BUILDPLATFORM node:18-alpine
+# Use an official Node.js runtime as a parent image
+FROM --platform=$BUILDPLATFORM node:18-alpine AS builder
 
+# Set working directory
 WORKDIR /app
 
-COPY package.json .
+# Copy package.json and package-lock.json files
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-RUN npm i -g serve
-
+# Copy the entire app
 COPY . .
 
+# Build the app
 RUN npm run build
 
-EXPOSE 3000
+# Production image
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-CMD [ "serve", "-s", "dist" ]
+# Expose port 80
+EXPOSE 80
+
+# Run the app
+CMD ["nginx", "-g", "daemon off;"]
