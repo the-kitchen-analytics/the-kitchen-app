@@ -11,23 +11,10 @@ export const buildStatisticsData = (rawData) => {
 
   const totalWorkerIncome = calculateTotalWorkerIncome(allProcedures)
   const totalWorkerRevenue = calculateTotalPrice(allProcedures)
-  const operationCount = rawData.flat().length
   const workedDays = _.uniq(rawData.flat().map(it => it.dateFormatted))
   const daysCount = workedDays.length
 
   const generalDataStatistics = Object.freeze([
-    {
-      color: 'yellow',
-      name: 'daysCount',
-      renderLabel: () => 'Рабочих дней',
-      renderValue: () => daysCount
-    },
-    {
-      color: 'teal',
-      name: 'operationsCount',
-      renderLabel: () => 'Процедур',
-      renderValue: () => operationCount
-    },
     {
       color: 'green',
       name: 'totalIncome',
@@ -35,7 +22,7 @@ export const buildStatisticsData = (rawData) => {
       renderValue: () => formatPrice(totalWorkerIncome)
     },
     {
-      color: 'green',
+      color: 'teal',
       name: 'totalRevenue',
       renderLabel: () => 'Выручка',
       renderValue: () => formatPrice(totalWorkerRevenue)
@@ -45,25 +32,20 @@ export const buildStatisticsData = (rawData) => {
   const chartData = buildChartData(allProcedures)
 
   if (daysCount > 1) {
+    const incomePerDay = _.divide(totalWorkerIncome, daysCount)
     const averageStatistics = Object.freeze(
       [
         {
-          color: 'orange',
-          name: 'operationsCountPerDay',
-          renderLabel: () => 'Процедур в среднем за день',
-          renderValue: () => _.divide(operationCount, daysCount).toFixed(0)
+          color: 'yellow',
+          name: 'daysCount',
+          renderLabel: () => 'Дней отработано',
+          renderValue: () => daysCount
         },
         {
           color: 'blue',
           name: 'incomePerDay',
-          renderLabel: () => 'В среднем за день',
-          renderValue: () => formatPrice(_.divide(totalWorkerIncome, daysCount))
-        },
-        {
-          color: 'violet',
-          name: 'incomePerOperation',
-          renderLabel: () => 'В среднем за процедуру',
-          renderValue: () => formatPrice(_.divide(totalWorkerIncome, operationCount))
+          renderLabel: () => 'В среднем в день',
+          renderValue: () => formatPrice(incomePerDay)
         }
       ]
     )
