@@ -30,13 +30,13 @@ export const ProcedureSelect = (props) => {
 
   const displayOptions = useMemo(() => ([
     {
-      key: 'shouldDisplayHalfPartProcedures',
+      id: 'shouldDisplayHalfPartProcedures',
       label: 'Показывать 1/2 услуги',
       checked: shouldDisplayHalfPartProcedures,
       onChange: toggleShouldDisplayHalfPartProcedures
     },
     {
-      key: 'shouldDisplayProcedurePrice',
+      id: 'shouldDisplayProcedurePrice',
       label: 'Показывать стоимость услуги',
       checked: shouldDisplayProcedurePrice,
       onChange: () => toggleSetter(setShouldDisplayProcedurePrice)
