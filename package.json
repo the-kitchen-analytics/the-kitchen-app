@@ -1,7 +1,7 @@
 {
   "name": "the-kitchen-vite-app",
   "private": true,
-  "version": "1.6.4",
+  "version": "1.6.5",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -13,26 +13,26 @@
     "@fontsource/roboto": "^5.1.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "firebase": "^11.0.2",
+    "firebase": "^11.1.0",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-firebase-hooks": "^5.1.1",
-    "react-router-dom": "^7.0.2",
+    "react-router-dom": "^7.1.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-react-swc": "^3.7.2",
-    "eslint": "^9.16.0",
+    "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
-    "globals": "^15.13.0",
-    "vite": "^6.0.2",
+    "globals": "^15.14.0",
+    "vite": "^6.0.5",
     "vite-plugin-eslint": "^1.8.1"
   }
 }
